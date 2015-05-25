@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Hello W</title>
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-size: 100%;
+            max-width: 100%;
+            background-position: center center;
+            background-color: #002665 !important;
+        }
+        .ui-content{
+            background: transparent;
+        }
+        /*ul li { background-color: transparent !important;}*/
+    </style>
+
+    <!-- JS Bootstrap -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" class="station-details" id="sub_area_stations">
+
+   <!-- <div data-position="fixed" style="background-color: #F5AB09 !important;" data-tap-toggle="false" data-role="header" data-hide-during-focus="" data-theme="r" class="ui-body-r center-wrapper">
+
+        <div id="left">
+           <a id="go_back" href="#" data-rel="back" data-transition="none" data-direction="reverse"  style="text-decoration:none !important;"><img src="assets/images/back.png"><span style="color: #ffffff;">Back</span></a>
+        </div>
+        <div id="right">
+            <a href="javascript:void(0)" onclick="reDirect('index.html');"  style="text-decoration:none !important;" ><img src="assets/images/logo-white.png"></a>
+        </div>
+        <div id="center" style="color: #ffffff;text-shadow: none">Station List</div>
+
+    </div> /header -->
+
+    <div role="main" style="overflow:hidden;" class="">
+
+        <h3 id="subarea_page_title" class="text-center"></h3>
+        <div style="padding: 20px" id="SubAreaPoliceStationList" >
+
+        </div><!-- /content -->
+    </div>
+
+    <div align="center" id="global_footer">
+	
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+
+    <script type="text/javascript" src="assets/js/html5sql.js"></script>
+    <script>
+
+        function goBack(){
+            //var area = localStorage.getItem('currentArea');
+            $.mobile.changePage('AreaPoliceStationList.html', {
+                    transition: 'none',
+                    reverse: 'true'
+                });
+        }
+        $(document).on( "pagecreate", "#sub_area_stations", function( e ) {
+            var area = localStorage.getItem('currentArea');
+             $.mobile.loading( "show");
+            var passedId = (($(this).data("url").indexOf("?") > 0) ? $(this).data("url") : window.location.href ).replace( /.*sub_area=/, "" );
+
+            passedId = passedId.replace('+',' ').replace('+',' ');
+            $('#subarea_page_title').html(passedId.toUpperCase());
+
+            html5sql.openDatabase("StationInfoDB", "StationInfoDB", 3 * 1024 * 1024);
+
+            html5sql.process([
+                "SELECT postal_code,area,station_name,address,sub_area,phone_no,zone,zone_phone_no,division_phone_no,regional_phone_no,control_phone_no,control_fax_no FROM tbl_police_stations WHERE TRIM(sub_area) ='"+passedId.trim()+"' AND TRIM(area) ='"+area+"' ORDER BY station_name ASC;"
+            ],
+                    function(transaction, results,rowsArray){
+                        var html = '';
+                        for(var i = 0; i < rowsArray.length; i++){
+                            var phone_nos = rowsArray[i].phone_no.split(",");
+                            var phone_no_html = '';
+                            for(j=0;j<phone_nos.length;j++){
+								if(phone_nos[j] != null && phone_nos[j] != '-'){
+									phone_no_html += '<a href="tel:'+phone_nos[j]+'">'+phone_nos[j]+'</a>&nbsp;&nbsp;'
+								}
+							}
+                           
+                            
+
+                            var reg_phone_nos = rowsArray[i].regional_phone_no.split(",");
+                            var reg_phone_no_html = '-';
+                            if(reg_phone_nos[0] != null && reg_phone_nos[0] != '-'){
+                                reg_phone_no_html = '<a href="tel:'+reg_phone_nos[0]+'">'+reg_phone_nos[0]+'</a>&nbsp;&nbsp;'
+                            }
+                            if(reg_phone_nos[1] != null && reg_phone_nos[1] != '-'){
+                                reg_phone_no_html += '<br><a href="tel:'+reg_phone_nos[1]+'"> '+reg_phone_nos[1]+'</a>'
+                            }
+                            var ctrl_phone_nos = rowsArray[i].control_phone_no.split(",");
+                            
+                            var ctrl_phone_no_html = '';
+                            for(j=0;j<ctrl_phone_nos.length;j++){
+								if(ctrl_phone_nos[j] != null && ctrl_phone_nos[j] != '-'){
+									ctrl_phone_no_html += '<a href="tel:'+ctrl_phone_nos[j]+'">'+ctrl_phone_nos[j]+'</a>&nbsp;&nbsp;<br>'
+								}
+							}
+							var ctrl_fax_nos = rowsArray[i].control_fax_no.split(",");
+							var ctrl_fax_no_html = '';
+							for(j=0;j<ctrl_fax_nos.length;j++){
+								if(ctrl_fax_nos[j] != null && ctrl_fax_nos[j] != '-'){
+									ctrl_fax_no_html += '<a href="tel:'+ctrl_fax_nos[j]+'">'+ctrl_fax_nos[j]+'</a>&nbsp;&nbsp;<br>'
+								}
+							}
+                            //each row in the rowsArray represents a row retrieved from the database
+                            html += '<div data-theme="b" data-content-theme="c" data-role="collapsible">'+
+                                    '<h4><span style="color:#ffffff !important">'+rowsArray[i].station_name+'</span></h4>'+                                    
+                                    '<p style="text-align: center;font-weight: bold">'+ rowsArray[i].station_name +' Police Station Address</p>'+
+                                    '<p>'+rowsArray[i].address+'</p>'+
+				    '<p><a href="javascript:void(1);" onclick="showMap(\''+rowsArray[i].postal_code+', '+rowsArray[i].station_name+' Police Station\');"><img src="assets/images/map_icon.png" style="float:left"></a>&nbsp;<a href="javascript:void(1);" onclick="showMap(\''+rowsArray[i].postal_code+', '+rowsArray[i].station_name+' Police Station\');"><span style="text-align:left">Navigate</span></a></p>'+
+                                    '<p style="text-align: left;font-weight: bold">Contact Nos: '+phone_no_html+'</p>'+
+                                    '<table class="tbl_border">'+                                   
+                                    '<tr>'+
+                                    '<td >Region: </td><td>'+rowsArray[i].area+'</td>'+
+                                    '</tr>'+
+                                    '<tr>'+
+                                    '<td >ACP<br>Division: </td><td>'+rowsArray[i].sub_area+'<br> <a href="tel:'+rowsArray[i].division_phone_no+'"> '+rowsArray[i].division_phone_no+'</a>  </td>'+
+                                    '</tr>'+
+                                    '<tr>'+
+                                    '<td >DCP<br>Zone: </td><td>'+rowsArray[i].zone+'<br> <a href="tel:'+rowsArray[i].zone_phone_no+'"> '+rowsArray[i].zone_phone_no+'</a>  </td>'+
+                                    '</tr>'+
+                                    '<tr>'+
+                                    '<td >Addl.CP<br>Contact: </td><td>'+reg_phone_no_html+'</td>'+             
+                                    '</tr>'+
+                                    '<tr>'+
+                                    '<td scope="row">Control Room<br> Numbers: </td><td>'+ctrl_phone_no_html+'</td>'+
+                                    '</tr>';
+                                    if(rowsArray[i].area !='North Region'){									
+										html += '<tr><td scope="row">Control Fax <br>Number: </td><td>'+ctrl_fax_no_html+'</td></tr>';
+									}
+									html +='</thead></table>'+
+										'</div>';
+                        }
+                         $.mobile.loading( "hide");
+                        $('#SubAreaPoliceStationList').html(html).trigger('create');
+                    },
+                    function(error){
+                        alert(JSON.stringify(error));
+                    }
+            )
+        });
+    </script>
+</div><!-- /page -->
+<script src="assets/js/common.js"></script>
+</body>
+</html>
+
+
+

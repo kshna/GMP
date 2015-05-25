@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Hello W</title>
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-size: 100%;
+            max-width: 100%;
+            background-position: center center;
+            background-color: #002665 !important;
+        }
+        .ui-content{
+            background: transparent;
+        }
+        table th, td, tr{border: transparent !important;outline:none !important;}
+        . ul{ margin: 0; padding: 0;}
+        . ul li{ list-style-type: none !important;}
+        div{padding:4px !important;}
+    </style>
+
+    <!-- JS Bootstrap -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" class="static_content_pages" id="safetytipinfo">
+   <!-- <div data-position="fixed" style="background-color: #F5AB09 !important;" data-tap-toggle="false" data-role="header" data-hide-during-focus="" data-theme="r" class="ui-body-r center-wrapper">
+
+        <div id="left">
+            <a id="go_back" onclick="goBack();" href="javascript:void(0)" style="text-decoration:none !important;"><img src="assets/images/back.png"><span style="color: #ffffff;">Back</span></a>
+        </div>
+
+        <div id="right">
+            <a href="javascript:void(0)" onclick="reDirect('index.html');"  style="text-decoration:none !important;" ><img src="assets/images/logo-white.png"></a>
+        </div>
+        <div id="center" style="color: #ffffff;text-shadow: none">GMP</div>
+
+    </div> /header -->
+
+   <h3 style="color:#FFFFFF;text-shadow: none" class="text-center" id="sub_tab_title">SAFETY TIP INFO</h3>
+
+<div role="main" style="overflow:hidden;color:#FFFFFF;text-shadow: none" class="without_borders text-align-l">
+
+<div id="residential" class="stips text-align-r" style="display:none">
+<div class="">
+<div>
+    <ol>
+            
+                <li>Hire qualified / experienced chowkidars only.</li>
+                <li>Check the antecedents / credentials of chowkidars and domestic servants before hiring them. Insist on references from their previous employers. Furnish their full particulars to your police station in the format suggested by them.</li>
+                <li>Always employ different chowkidars for day and night duties.</li>
+                <li>Secretaries of Societies are advised to brief all the security men / chowkidars / lift men about various aspects of security. Some of these are:
+
+                    <ul>
+                        <li>To make an enquiry if a taxi or auto-rickshaw is seen parked inside the compound or outside the building for a long time.</li>
+                        <li>To inform the police in case they find any vehicle parked inside the building (if ownership is not known) for a long time.</li>
+                    </ul>
+
+
+                </li>
+                <li>Secretaries of societies are advised to brief all residents on the following:
+
+
+                    <ul>
+                        <li>Whenever they employ a new servant, the local police station should be informed. His or her photographs, fingerprints and other details should be obtained and submitted to local police station.</li>
+                        <li>They should be advised to install a door with iron bars inside the flat, superior quality night latches and special eye lens on the main door.&nbsp;&nbsp; Ideally, interaction with strangers and vendors should be through the grilled door. High wattage light source with pilfer proof cover outside the main door should be installed.</li>
+                        <li>They should not keep huge amounts of cash, valuable ornaments etc., in the house.</li>
+                        <li>They should avoid discussing money transactions and other important family matters in the presence of servants/ outsiders.</li>
+                        <li>They should not humiliate servants on petty matters. Nor should they penalize them for small damages.</li>
+                    </ul>
+                </li>
+
+                <li>It is important to inform the police about any suspicious happening or unclaimed object found in suspicious circumstances. Extend full cooperation to the police.</li>
+                <li>A special register should be maintained in every society and kept in the custody of the chowkidar or in the society's office. Whenever Police officers visit the area, they should get an entry in such registers.</li>
+            
+    </ol>
+
+    <div class="headingtext">
+        <h3>IN CASE POLICEMEN ARE CHASING A CRIMINAL.</h3>
+    </div>
+    <ul>
+                <li>Give way to the police immediately.</li>
+                <li>If possible, note down the number of the escaping vehicle and the identity of the occupants.</li>
+                <li>Remember the entry and exit routes of the criminals.</li>
+            
+    </ul>
+
+    
+</div>
+</div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="commercial">
+<div class="">
+<div>
+
+    <ul>
+        
+                <li>Hire security personnel from reputed agencies only.</li>
+                <li>Use transport for carrying all valuables. If you regularly carry money, or any other precious commodity, change the route and time randomly.</li>
+                <li>Avoid cash payments as far as possible, especially in the presence of
+                    servants / outsiders.</li>
+                <li>Do not talk loudly on the telephone (especially cellular phones) about
+                    money matters.</li>
+                <li>All security personnel, including lift men should be thoroughly briefed on various aspects of security.</li>
+                <li>Wherever possible use CCTV and other electronic alarm systems.</li>
+                <li>Inform the police about any suspicious happening or unclaimed object lying for a long time. Extend full co-operation to the police.</li>
+            
+    </ul>
+    
+</div>
+</div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="vehicle_theft">
+    <div class="">
+    <div>
+
+        
+
+                Every year, nearly 36,000 vehicles, which amount to Rs.115 crore, are stolen in India out of these, only about 14,500 are traced, often in un-roadworthy conditions, with many components missing. These vehicles are stolen only because thieves are provided with the opportunity to steal them. Very often, cars are left improperly secured and unattended. It is only with the installation of anti - theft devices that a thief's attempts can be frustrated.<br>
+                <br>
+
+
+                Parking in a secure parking facility (garage, petrol pump, etc.) at night also
+                safe-guards against theft. If such parking facilities are not available, parking in a well-lit area is the next best alternative.<br>
+                <br>
+
+
+                It is advisable to get the number of your car etched on your windscreens and window glasses. It helps the authorities to trace your car if stolen.<br>
+                <br>
+
+                <b>Simple do's and don'ts :- </b><br>
+                <br>
+			
+            
+        <div class="headingtext">
+            <h3>WHAT YOU SHOULD DO...</h3>
+       </div>
+
+        <ul>
+            
+                    <li>Use securing devices like steering lock, clutch lock, brake lock, etc.</li>
+                    <li>Double-check all doors, including the boot.</li>
+                    <li>If possible, install loud alarm systems in your car, so that thieves can be discouraged even if they manage to break into your car.</li>
+                    <li>Try and use detachable music systems and take them with you whenever you park the car for a long time, so that there is no temptation for thieves to make a quick steal when they see expensive items in parked cars.</li>
+                    <li>Paint your car number on the front and rear end of the body, apart from the number plates. Ideally, have it etched on the windscreens and window glasses too. This prevents them from being misused by criminals using fake number plates.</li>
+               
+        </ul>
+
+
+        <div class="headingtext">
+            <h3>WHAT YOU SHOULD NOT DO...</h3>
+		</div>
+        <ul>
+            
+                    <li>Never leave the vehicle door unlocked, nor the windows partially open. Make sure that the quarter glasses are properly secured.</li>
+                    <li>Do not leave valuables inside the car, even if it is locked, as this will attract thieves.</li>
+                    <li>Do not overdo extra fittings, as these tempt prospective thieves.</li>
+                    <li>Never leave the key dangling in the ignition.</li>
+                
+        </ul>
+
+
+        <div class="headingtext">
+            <h3>IN CASE YOUR CAR IS STOLEN...
+            </h3>
+       </div>
+
+        <ul>
+            
+                    <li>Report the theft to the nearest police station.</li>
+                    <li>Inform your insurance company.</li>
+                
+        </ul>
+
+
+        
+    </div>
+    </div>
+</div>
+
+<div style="display: none" id="physical_security_measures" class="text-align-r">
+    <div class="">
+    <div>
+        
+
+                Explosions and bomb-threat are a harsh reality in the current times. As the threat spreads to the life of common man, it becomes imperative for him to actively participate in dealing with it. No organization, including police can do, what collective responsibility can. Awareness and preparation are the key words in dealing with the threat, whether potential or real. If people at large understand and execute certain laid down guidelines, they can greatly reduce the potential of personal injury, property loss and trauma that accompanies bomb-threat. Most important of all, they can help to reduce panic, the most contagious of all the human reactions and the ultimate achievement of the person executing the bomb-threat. <br>
+                <br>
+                This brochure has been designed to give you an understanding of the practical steps to be taken by way of precaution and detailed procedure to be implemented when a bomb-threat has been given. <br>
+                <br>
+
+
+                This brochure is divided into two parts:
+                The Prevention Plan deals with various steps to be taken for protection of property, personnel material against unauthorized entry, trespass, and damage, thus reducing the vulnerability of your organization to bomb-attacks.<br>
+                <br>
+
+
+                The Bomb-Threat Plan tells you how to respond to a bomb-threat, written or verbal, what to do before the police arrives to your help and how to help and co-ordinate with the police.<br>
+                <br>
+
+
+                In making this pamphlet available to you, we hope to help you better prepare to deal with bomb threats and the illegal use of explosives.. <br>
+                <br>
+
+
+                What is a Bomb?
+                Bombs are explosive devices. They can be constructed to look like almost anything and can be placed or delivered in any number of ways. (How we wish they all looked like the ones shown in movies, with fancy switches, colourful wires and a big watch hanging with the whole paraphernalia!). The only common denominator that exists among bombs is that they are designed to explode. <br>
+                <br>
+
+
+                Most bombs or as we call them IEDs (Improvised Explosive Devises) are hand made and are limited in their design only by the imagination of, and resources available to, the bomber. Remember, when looking for a bomb, suspect anything that looks unusual and out of place. The thumb-rule is, anything, unless it belongs to you or you know (not presume) about, may be a bomb. Simple? Leave it to the trained bomb technician to determine whether it is a bomb or not.
+                <br>
+                <br>
+
+                The Prevention Plan
+                Most establishments already have some planned or unplanned security in place. Locks on windows and doors, outside lights, etc., are all designed and installed to contribute toward the security and the protection of its occupants. This brochure is meant to suggest a systematic approach towards the security planning for your organization.
+                <br>
+                <br>
+
+                In considering measures to increase security for your building or establishment, it is highly recommended that you perform a ‘security audit’ for your establishment. Don’t be intimidated by the word. It merely involves thinking of the various opportunities your establishment offers to some one to come close enough to harm the occupants, or to plant some explosive device there. You may consider establishing a task force involving staff and security personnel working in your establishment for this purpose. There are various private organizations which may help you in this. In the case of any difficulty or help needed, please contact the nearest police station. We shall be happy to help you.
+                <br>
+                <br>
+
+                There is no single security plan that is adaptable to all situations. The following recommendations are offered because they may contribute to reducing your vulnerability to bomb attacks.
+
+                <ol>
+                    <li>The exterior configuration of a building or facility is very important. Unfortunately, in most instances, the architect has given little or no consideration to security, particularly toward thwarting or discouraging a bomb attack. However, by the addition of fencing and lighting, and by controlling access, the vulnerability of a facility to a bomb attack can be reduced significantly.</li>
+                    <li>Bombs being delivered by car or left in a car are a grave reality. Visitors parking should be restricted, if possible, to 300 feet from your building or any building in a complex. If restricted parking is not feasible, properly identified employee vehicles should be parked closest to your facility and visitor vehicles parked at a distance.</li>
+                    <li>Heavy shrubs and vines should be kept close to the ground to reduce their potential to conceal criminals or bombs. Window boxes and planters are perfect receptacles for the bomber. Unless there is an absolute requirement for such ornamentation, window boxes and planters are better removed. If they must remain, security personnel should be briefed to check them regularly.</li>
+                    <li>A highly visible security man can be a significant deterrent. Even if this "patrol" is only one security guard/night guard, he can be optimally utilized outside the building. Consider the installation of closed circuit television cameras that cover exterior building perimeters. Have an adequate burglar alarm system installed. Post signs indicating that such a system is in place.</li>
+                    <li>Entrance/exit doors may be given a second glance. Solid wood or sheet metal faced doors provide extra integrity that a hollow-core wooden door cannot provide. Bars, grates, heavy mesh screens, or steel shutters over windows offer good protection from otherwise unwanted entry. Floor vents, transoms, and skylights should also be covered.</li>
+
+                    <li>Controls should be established for positively identifying personnel who are authorized access to critical areas. These controls should extend to the inspection of all packages and materials being taken into critical areas.</li>
+
+                    <li>Security and maintenance personnel should be alert for people who act in a suspicious manner, as well as objects, items, or parcels which look out of place or suspicious. Surveillance should be established to include potential hiding places (e.g., stairwells, rest rooms, and any vacant office space) for unwanted individuals.</li>
+
+                    <li>Doors or access ways to such areas as boiler rooms, mail rooms, computer areas, switchboards, and elevator control rooms should remain locked when not in use. It is important to establish a procedure for the accountability of keys.</li>
+                    <li>Entrances and exits can be modified with a minimal expenditure to channel all visitors through a reception desk. Individuals entering the building would be required to sign a register indicating the name and room number of the person whom they wish to visit. A system for signing out when the individual departs could be integrated into this procedure.</li>
+
+                    <li>Maintenance of good public relations is important for every organization. However, please remember that ensuring security for your organization and your patrons is vital. And YOU are responsible for it. The threatened use of explosives necessitates that in the interest of safety and security, some inconvenience may have to be imposed on visitors to public buildings. Fortunately, the public is becoming more accustomed to routine security checks and will readily accept these minor inconveniences.</li>
+
+                    <li>Maintenance of good public relations is important for every organization. However, please remember that ensuring security for your organization and your patrons is vital. And YOU are responsible for it. The threatened use of explosives necessitates that in the interest of safety and security, some inconvenience may have to be imposed on visitors to public buildings. Fortunately, the public is becoming more accustomed to routine security checks and will readily accept these minor inconveniences.</li>
+
+                </ol>
+
+                <b>The Bomb-Threat Plan</b>
+                It is easy to lose nerve when one picks up the phone and receives a grave voice telling that his place is going to be blown off any minute. It is very important to be prepared with an organized plan to deal with such a situation. This will help you to tide over any threat situation without unnecessary panic, confusion, and chaos in your establishment.
+                <br>
+                <br>
+                <b>Responding to a Bomb-Threats </b>
+					<ol>
+                    <li>All your phones must have caller ID system. Having a facility for automatic recording of calls is not a bad idea. Probability of being caught is the biggest deterrent for any prankster. Let your employees/workers/students know that you have state-of-art machines fitted at your central phone consol. It helps.</li>
+                    <li>Treat all threat calls as important. Just because statistics suggest that most of the bomb-threats are hoax, it does give us any room for complacency.</li>
+                    <li>Instruct all personnel, especially those at the telephone switchboard, in what to do if a bomb-threat is received. A calm response to the bomb threat caller could result in obtaining additional information. This is especially true if the caller is a genuine one and wishes to avoid injuries or deaths. If told that the building is occupied or cannot be evacuated in time, the caller may be willing to give more specific information on the bomb's location, components, or method of initiation.</li>
+                    <li>The bomb threat caller is the best source of information about the bomb. When a bomb threat is called in:
+
+                        <ul>
+                            <li>Keep the caller on the line as long as possible. Ask him/her to repeat the message. Record every word spoken by the person.</li>
+                            <li>If the caller does not indicate the location of the bomb or the time of possible detonation, ask him/her for this information.</li>
+                            <li>Inform the caller that the building is occupied and the detonation of a bomb could result in death or serious injury to many innocent people.</li>
+                            <li>Pay particular attention to background noises, such as motors running, music playing, and any other noise which may give a clue as to the location of the caller.</li>
+                            <li>Listen closely to the voice (male, female), voice quality (calm, excited), accents, and speech impediments. Immediately after the caller hangs up, report the threat to the person designated by management to receive such information. </li>
+
+                            <li>Report the information immediately to the police. Never think that you will be called an alarmist. Remember &ndash; every call is true, unless otherwise proven.</li>
+                            <li>Remain available. Police will want to interview you. </li>
+
+                        </ul>
+                    </li>
+                    <li>When a written threat is received, save all materials, including any envelope or container. Once the message is recognized as a bomb threat, further unnecessary handling should be avoided. Every possible effort must be made to retain evidence such as fingerprints, handwriting or typewriting, paper, and postal marks. These will prove essential in tracing the threat and identifying the writer.</li>
+					</ol>
+                
+                <b>Summary</b>
+                This pamphlet serves only as a guide and is not intended to be a comprehensive manual for securing your establishment or preparing you from any bomb-threat. There can be various different scenarios and situations. In all such cases, rule of thumb is: Remain calm and use your common sense. Police is always there to help you. Be prepared. Be safe.
+        
+        </div>
+        </div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="property_purchase">
+    <div class="">
+    <div>
+
+        
+                <b> Instructions to members of public about CO. OP. HSG. Societies and how to prevent cheating at the time of purchasing flats</b><br><br>
+            
+        <div class="headingtext">
+            <h3>1. VERIFICATION OF OWNERSHIP OF LAND.</h3>
+            </div>
+
+        
+                Ensure from the City Survey office that the developer has been granted the N.O.C and the land is Non-Agricultural (N.A.)
+            
+
+       <br>
+                <table width="100%" cellspacing="0" cellpadding="5" style="border: medium none transparent;
+    outline: 0 none;">
+                    <tr>
+                        <td width="29%">Types of land</td>
+                        <td width="71%">Where to verify from</td>
+                    </tr>
+                    <tr>
+                        <td>BMC Land</td>
+                        <td>The concerned Ward office</td>
+                    </tr>
+                    <tr>
+                        <td>Govt. land</td>
+                        <td>Verification from the Collector’s office</td>
+                    </tr>
+                    <tr>
+                        <td>MHADA land</td>
+                        <td>Verification from MHADA, Bandra (E)</td>
+                    </tr>
+                    <tr>
+                        <td>B.P.T. land</td>
+                        <td>Estate Manager, Mumbai Port Trust, Ballard Pier</td>
+                    </tr>
+                    <tr>
+                        <td>Salt land</td>
+                        <td>Commissioner of Salt, Ballard Pier</td>
+                    </tr>
+                    <tr>
+                        <td>Trust land</td>
+                        <td>President of the concerned Trust, and charity Commissioner, Worli</td>
+                    </tr>
+                    
+                    </table>
+
+      		<br>
+        For clear title, 7/12 (Sat Bara) Extract to be verified from the "Talathi" OR "Tahasildar" office.
+
+                <br>
+                <br>
+                For Land in Dispute or in legal litigation - approach "Bailiff" or "Arbitrator" from
+                High Court.<br>
+
+        <div class="headingtext">
+            <h3>2. N.O.C.’s OF VARIOUS AUTHORITIES</h3>
+        </div>
+
+        <table width="100%" cellspacing="0" cellpadding="5" style="border: medium none transparent;
+    outline: 0 none;">
+                    <tr>
+                        <td>Fire Brigade</td>
+                        <td>Especially for high rise buildings</td>
+                    </tr>
+                    <tr>
+                        <td>Traffic Dept.</td>
+                        <td>Mumbai Police.</td>
+                    </tr>
+                    <tr>
+                        <td>BEST/BSES</td>
+                        <td>For electricity supply.</td>
+                    </tr>
+                    <tr>
+                        <td>IAAI</td>
+                        <td>Building in airport vicinity.</td>
+                    </tr>
+                    <tr>
+                        <td>Railway</td>
+                        <td>Near the railway track</td>
+                    </tr>
+                    <tr>
+                        <td>BMC</td>
+                        <td>For drainage, water supply, commencement certificate</td>
+                    </tr>
+
+            
+			</table>
+
+        <div class="headingtext">
+            <h3>3. TO CHECK THE LEGALITY OF THE CONSTRUCTION</h3>
+        </div>
+
+        
+                Checking of Commencement Certificate or Intimation of Disapproval by the Municipal authorities.<br>
+                <br>
+                Contact the Builder / Developer for
+                <ul>
+                    <li>Plans submitted by the architect</li>
+                    <li>Notice in Newspaper for clearance of title of the land</li>
+                    <li>Certificate from solicitor</li>
+                    <li>Confirm whether Residential or Commercial</li>
+                    <li>F.S.I. permitted, and utilized by the builder</li>
+                    <li>Percentage of reservation made for Government flats or any special category</li>
+                    <li>Whether covered under Urban Land Ceiling Reservation</li>
+                </ul>
+            
+
+
+        <div class="headingtext">
+            <h3>4. ENTERING INTO AGREEMENT</h3>
+        </div>
+
+        <ul>
+            
+                    <li>The agreement for sale should be properly signed by the concerned parties</li>
+                    <li>The agreement must be attested by two witnesses</li>
+                    <li>Only the agreement registered with the Collector will be treated as the&nbsp;"legal document"</li>
+                    <li>Stamp Duty should be paid only at the Collector’s Office at the time of registration of the agreement</li>
+                
+        </ul>
+
+        <div class="headingtext">
+            <h3>5. MODE OF PAYMENT</h3>
+        </div>
+
+        <ul>
+            
+                
+                    <li>Cheque is the safest way of payment.</li>
+                    <li>If paid by cash, insist on receipt.</li>
+                    <li>Repayment of loans obtained from the Financial Institutions should be made only
+                        to the concerned Institution and not to the builder or developer.</li>
+                
+            </ul>
+
+                So Here's wishing you a very happy year ahead, And all the bad luck to the cheats.
+            
+
+        </div>
+        </div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="gulf_jobs">
+    <div class="">
+    <div>
+
+        
+                There is a chain of unauthorized agents and subagents who claim to recruit for vacancies in gulf countries. These agents collect huge amounts from needy job seekers via attractive and misleading advertisements in newspapers.<br>
+            
+        <div class="headingtext">
+            <h3>PRECAUTIONS WHILE APPLYING FOR NEW PASSPORTS AND SEEKING JOBS OUTSIDE INDIA:</h3>
+
+        <div>
+            <ol>                
+                    <li>While applying for a new passport, fill up the application form and pay the money at the counter of the Passport office personally. Avoid using the services of self proclaimed agents loitering outside</li>
+                    <li>There are no authorized agents appointed by the Passport Authority</li>
+                    <li>Passports cannot be SOLD. Touts may try it on you, but remember that traveling on a bogus Passport is illegal</li>
+                    <li>Looking for the registration number of recruiting agents on all advertisements for jobs outside India</li>
+                    <li>Insist on seeing the original registration certificate of the agent and check its validity before handing over your passport</li>
+                    <li>Get your passport, valid visa, travel tickets and ensure completion of all immigration formalities before handing over the full payment</li>
+                    <li>Payment should be made only to authorized agents and a receipt thereof must always be obtained</li>
+                    <li>The job seeker should know that the agent is bound to provide employment to the candidate within 60 days from making the final payment</li>
+                    <li>Prior agreement should be made regarding the type of job and terms of agreement should be gone through carefully</li>
+                    <li>In the event of any foul play, the job seeker should immediately contact the local police station or Economic Offences Wing, Crime Branch, C.I.D., Opp. Mahatma Phule Market, Mumbai- 400 001</li>
+                    <li>The list of authorized agents is available with all the police stations and the Economic Offences Wing, Crime Branch, C.I.D., Mumbai</li>
+                
+            
+        </ol>
+        </div>
+        </div>
+</div>
+</div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="banking_precautions">
+    <div class="">
+    <div>
+        <ol>
+            
+                
+                    <li>Never introduce an unknown person for the purpose of opening an account in your Bank</li>
+                    <li>Never encash cheques / drafts of an unknown person through your account</li>
+                    <li>Do not keep your account in-operative for a long time</li>
+                    <li>To avoid theft in postal transit or courier services and subsequent cheating, keep a track on the cheques / drafts / pay orders sent through post and courier services</li>
+                    <li>As far as possible, bank transactions should be handled personally</li>
+                    <li>Take care of your cheque books. Do not keep signed cheques in the drawer or any place where outsiders have an easy access</li>
+                    <li>All bank transactions should be counter checked to ensure that deposited cheques have been realized</li>
+                    <li>Monthly statements of your bank account should be invariably checked</li>
+                    <li>At the time of withdrawal of cash, the account holder must physically check the cash. Never hand over the cash to a third person for counting</li>
+                
+            
+        </ol>
+
+        <div class="headingtext">
+            <h3>
+                TO AVOID BOUNCING OF CHEQUES
+            </h3>
+        </div>
+
+        <ol>
+            
+                
+                    <li>Insist for D.D. or Pay Orders if you are dealing with an unknown party</li>
+                    <li>Postdated cheques should be avoided</li>
+                    <li>If a cheque bounces, you should give a notice to the person within 15 days of such intimation. If you do not receive a reply, file a complaint in the court under section 138 of the Negotiable Instruments Act, 1981, where effective remedies are available to the public. All cases of bounced cheques may not be offences of cheating under the Indian Penal Code</li>
+
+                
+            
+        </ol>
+
+        </div>
+        </div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="fraud_money_schemes">
+    <div class="">
+    <div>
+        <div class="headingtext">
+            <h3>
+                WHAT THEY SAY
+            </h3>
+        </div>
+
+        <ul>
+            
+                
+                    <li>Double your money in two months or less</li>
+                    <li>Post dated cheques as a guarantee for the same</li>
+                    <li>Claim they do it by investing in some wonder projects or plantations</li>
+                    <li>Huge sums of money by being a part of the gift chain i.e. you gift a certain amount of money to two people, then find two people who will enter the chain by gifting you the sum. They in turn will get two more subscribers, and so on</li>
+                    <li>As the scheme is run by a registered company, it is absolutely safe</li>
+                
+            
+        </ul>
+
+        <div class="headingtext">
+            <h3>
+                REALITY
+            </h3>
+        </div>
+
+        <ul>
+            
+                
+                    <li>All schemes offering high returns of double money within two months or such short spans have no legal sanction, nor they are reliable</li>
+                    <li>Postdated cheques is not a guaranteed payment device, as they could bounce when you finally present them</li>
+                    <li>There are no projects, especially agriculture based, which can give returns in  less than a year. In fact, tree plantations take at least 10 years to mature</li>
+                    <li>Gift schemes and chains are an offence under the Prize Chits and Money Circulation Schemes (Banning) Act of 1978</li>
+                    <li>Even registered companies are not allowed to promote and run any such schemes</li>
+                
+            
+        </ul>
+
+        </div>
+        </div>
+</div>
+<div style="display: none"  class="stips text-align-r " id="emergency_situations">
+    <div class="">
+    <div>
+        <div class="headingtext">
+            <h3>
+                IF FIRING OCCURS WHILE YOU ARE AT WORK OR WALKING ON A STREET.
+            </h3>
+        </div>
+
+        <ul>
+            
+                    <li>Lie down onto the ground immediately.</li>
+                    <li>Do not show any unwanted curiosity. The criminal may feel threatened and
+                        shoot at you.</li>
+                    <li>When possible, move to a safer place, slowly, without drawing attention to yourself. Take cover behind solid objects like a car or a wall.</li>
+                    <li>If you can see the criminals from your hiding place, try to note and memorize their distinguishing features.</li>
+                    <li>If you are out of sight of the criminals, call up 100 and inform the Police.
+                        If you are within earshot, try to remember their conversation.</li>
+                    <li>Do not disturb the scene of the crime.</li>
+                
+        </ul>
+
+        <div class="headingtext">
+            <h3>
+                IN CASE POLICEMEN ARE CHASING A CRIMINAL.
+            </h3>
+        </div>
+
+        <ul>
+            
+                
+                    <li>Give way to the police immediately</li>
+                    <li>If possible, note down the number of the escaping vehicle and the identity of the occupants</li>
+                    <li>Remember the entry and exit routes of the criminals</li>
+                
+           
+        </ul>
+
+        </div>
+        </div>
+</div>
+<div style="display: none"  class="stips text-align-r " id="senior_citizen_safety">
+	<div class="">
+    <div>
+
+        <ol>
+            
+                    <li>Majority of the offences committed by the persons are known to the victims - servant, watchman, craftsman etc.</li>
+                    <li>Criminals are generally  not on police record</li>
+                    <li>Database of elderly people staying alone in the jurisdictions of various Police Stations are compiled with  poor response.</li>
+                    <li>Servants information not provided to Police - fear of loosing servants</li>
+                </ol>
+
+                Mumbai Police with the help of Dignity Foundation, AGNI (Action for Good Governance and Networking in India) and Federation of Senior Citizens Organisation of Maharashtra is making efforts in motivating Sr. Citizens in this regard
+
+            
+
+        <div class="headingtext">
+            <h3>
+                DO'S AND DON'TS FOR YOU:
+            </h3>
+        </div>
+
+        
+
+                Employ a servant after verifying his real name, native address with the help of the nearest Police Station or through the security wardens of Dignity Foundation and AGNI
+                <ul>
+                    <li>Never discuss financial matters in front of your servant</li>
+                    <li>It is always safe to deposit your valuables in safe deposit vault of any Bank</li>
+                    <li>Treat your servant in a humane way</li>
+                    <li>Do not allow any of the relatives or friends of your servant to visit your house. If at all he has any frequent visitor, get his antecedents checked from police and try to keep the number of such persons.</li>
+                    <li>Make your neighbour know of you being staying alone. The Housing Society also needs to know this.</li>
+                    <li>Use of modern security gadgets is always advantageous. Door alarm, electronic eye bell etc. is available in market. Consult the professionals in this regard</li>
+                    <li>Install a peephole in your front door and always check the identification of strangers before you let them inside your home.</li>
+                    <li>Never leave spare keys in open or in the conventional hiding places</li>
+                    <li>Verify the identity of any repairmen. Use the telephone number listed in the phone book, not the one suggested by them</li>
+                    <li>Inform your society about the unacquainted visitors, so that their identity could be checked at the very gate of the society</li>
+                    <li>A well-designed electronic alarm system attached to the office of your Housing. Society or to the watchman’s cabin would be advisable so as to send alarm signals to all simultaneously</li>
+                    <li>When you admit a workman or a salesman, do not leave him alone at any time</li>
+                </ul>
+            
+
+        </div>
+        </div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="dos_and_donts">
+    <div class="">
+    <div>
+       
+            
+                <b>DON'TS</b>
+                <ul>
+                    <li>Do not touch or remove the object unless you are duty bound.</li>
+                    <li>Do not open the package. Do not puncture package.</li>
+                    <li>Do not submerge packet into water.</li>
+                    <li>Do not accept identification marks on its face value.</li>
+                    <li>Do not pass metallic object over the package.</li>
+                    <li>Do not direct flash light directly over the suspected object.</li>
+                    <li>Do not cut the strings or wire.</li>
+                    <li>Do not bring suspected device in security control room or police station. Always remove the people and not the bomb from scene.</li>
+                    <li>Do not attempt to open the baggage by hand.</li>
+                    <li>Don't be a dead-hero.</li>
+                    <li>You can reconstruct a building or house but you cannot recreate a dead man alive.</li>
+                </ul>
+
+                <b>DO'S</b>
+               <ul> 
+                    <li>Do evacuate people immediately to a safe distance.</li>
+                    <li>Open all windows &amp; doors.</li>
+                    <li>Place sand bags around the suspected object.</li>
+                    <li>Inform bomb disposal squad.</li>
+                    <li>Inform fire brigade, Hospital &amp; Ambulance.</li>
+            
+				</ul>
+
+        </div>
+        </div>
+</div>
+
+<div style="display: none"  class="stips text-align-r " id="children_and_women_safety">
+    <div class="">
+    <div>
+        
+                Call 103 to raise your voice against violence<br>
+                <br>
+
+                <b>Say “NO” :-</b><br>
+                <br>
+
+
+                No one has the right to tease you or sexually harass you. No one has the right to make you uncomfortable, whether you are at home or on the streets, whether in school, college or in a social gathering.<br>
+                <br>
+
+
+                No one has the right to beat you, torture you physically or mentally, or force use on you in any way. No matter what your relationship is with this person.<br>
+                <br>
+
+
+                <b>REMEMBER :-</b><br>
+                <br>
+
+
+                Violence against you is not your fault. Violence is not anyone’s right. Don’t hesitate, don’t be afraid to call for help.<br>
+                <br>
+
+
+                Call 103 &ndash; 24 hour helpline for crime against women in Mumbai and the police will be there immediately to take action. It is up to you to make that call.
+
+            
+
+        </div>
+        </div>
+</div>
+</div><!-- /content -->
+
+    <div align="center" id="global_footer">
+		
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+   <script>
+       $(document).on( "pagecreate","#safetytipinfo", function( e ) {
+           var passedId = (($(this).data("url").indexOf("?") > 0) ? $(this).data("url") : window.location.href ).replace( /.*sType=/, "" );
+           $('.stips').hide();
+           passedId=passedId.trim().split("+").join(" ");
+           $("#sub_tab_title").html(passedId);
+           $('#'+passedId.toLowerCase().split(" ").join("_")).show();         
+       });
+   </script>
+    </div>
+
+<script src="assets/js/common.js"></script>
+</body>
+</html>

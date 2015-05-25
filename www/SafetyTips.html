@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Hello W</title>
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-size: 100%;
+            max-width: 100%;
+            background-position: center center;
+            background-color: #002665 !important;
+        }
+        .ui-content{
+            background: transparent;
+        }
+    </style>
+
+    <!-- JS Bootstrap -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" class="static_content_pages" id="safetytips">
+
+    <!--<div data-position="fixed" style="background-color: #F5AB09 !important;" data-tap-toggle="false" data-role="header" data-hide-during-focus="" data-theme="r" class="ui-body-r center-wrapper">
+
+        <div id="left">
+            <a id="go_back" onclick="goBack();" href="javascript:void(0)" style="text-decoration:none !important;"><img src="assets/images/back.png"><span style="color: #ffffff;">Back</span></a>
+        </div>
+
+        <div id="right">
+            <a href="javascript:void(0)" onclick="reDirect('index.html');"  style="text-decoration:none !important;" ><img src="assets/images/logo-white.png"></a>
+        </div>
+        <div id="center" style="color: #ffffff;text-shadow: none">GMP</div>
+
+    </div>&lt;!&ndash; /header &ndash;&gt;-->
+
+    <h3 class="text-center" style="color: #FFFFFF">SAFETY TIPS</h3>
+
+    <div role="main" style="overflow:hidden" class="">
+
+        <div id="main_default">
+
+            <div style="margin-top: 50px" id="">
+                <a href="javascript:void(0)" onclick="getSafetyPage(this.id);" id="Residential" class="ui-btn ui-icon-carat-r ui-btn-icon-right"  data-role="button" >Residential</a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Commercial" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  data-role="button" >Commercial </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Vehicle Theft" class="ui-btn ui-icon-carat-r ui-btn-icon-right "  data-role="button" >Vehicle Theft </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Physical Security Measures" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Physical Security Measures </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Property Purchase" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Property Purchase </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Banking Precautions" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button" >Banking Precautions </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Gulf Jobs" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Gulf Jobs </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Fraud Money Schemes" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Fraud Money Schemes </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Emergency Situations" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Emergency Situation </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Senior Citizen Safety" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Senior Citizen's Safety </a>
+                <!-- <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Children And Women Safety" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Children And Women Safety </a>
+                <a href="javascript:void(0)"  onclick="getSafetyPage(this.id);" id="Dos And Donts" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Do's And Dont's </a> -->
+                <a href="javascript:void(0)"  onclick="$.mobile.changePage('CitizensCharter.html', { transition: 'none'});" id="Citizens Charter" class="ui-btn ui-icon-carat-r ui-btn-icon-right " data-role="button">Citizens' Charter  </a>
+
+            </div>
+        </div>
+
+    </div><!-- /content -->
+
+    <div align="center" id="global_footer">
+	
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+<script>
+
+    function getSafetyPage(id){
+        $.mobile.changePage('SafetyTipInfo.html', {
+            data: {
+                sType: id
+            },
+            transition: 'none'
+        });
+    }
+
+</script>
+</div><!-- /page -->
+<script src="assets/js/common.js"></script>
+</body>
+</html>
+
+
+

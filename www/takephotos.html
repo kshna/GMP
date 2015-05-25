@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Greater Mumbai Police</title>
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-size: 100%;
+            max-width: 100%;
+            background-position: center center;
+            background-color: #002665 !important;
+        }
+        .ui-content{
+            background: transparent;
+        }
+        table th, td, tr{   border: transparent !important;outline: none !important;}
+    </style>
+
+    <!-- JS Bootstrap -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+    onDeviceReady();
+    </script>
+</head>
+<body onload="onBodyLoad()">
+
+<div data-role="page" class="preface1" id="crime_report">
+
+    <h3 class="text-center" style="color: #000000">Report a crime</h3>
+
+    <div role="main" style="overflow:hidden" class="">
+
+    
+        <div id="main_default">
+        <div id="report_info" style="display:none"></div>
+        <a id="tkphoto" style="font-size: 14px;" href="javascript:void(1)" onclick="takePhoto();" class=""  data-role="button" >Take Photo</a>        
+        <br>
+             <center><img id="photo_disp" src="" height="300px" style="display:none"></center>
+             <br>
+             <div id="crime_details_block" style="display:none">
+             Crime Details: (Optional)
+             <textarea name="crime_details" id="crime_details" placeholder="Enter details of crime"></textarea>
+             </div>
+            <a id="submit_photo" style="font-size: 14px;display:none" href="javascript:void(1)" onclick="uploadPhoto();" class=""  data-role="button" >Submit</a>         
+        </div>
+          <center> <div id="ft_progress_block" style="display:none">Processing please wait...<progress max="100" value="0" id="ft-prog"></progress></div></center>
+    </div><!-- /content -->
+    <div align="center" id="global_footer">
+    
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();" width="80%" height="60%"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->    
+<script>
+function takePhoto() {
+ //   alert("called");
+  navigator.camera.getPicture(function(imageURI) {
+        $("#photo_disp").attr("src",imageURI);
+        $("#photo_disp").show();
+        $("#submit_photo").show();
+        $("#crime_details_block").show();
+     //   alert(imageURI);
+  }, function(err) {
+        alert("cannot take photo");
+  });
+}
+
+function uploadPhoto() {
+      //  alert("uploading photo");
+        //selected photo URI is in the src attribute (we set this on getPhoto)
+        var imageURI = $('#photo_disp').attr("src");
+        if (!imageURI) {
+            alert('Please take a photo and then submit.');
+            return;
+        }
+
+        $("#crime_details").val('');
+        $("#photo_disp").hide();
+        $("#submit_photo").hide();
+        $("#crime_details_block").hide();
+        $("#tkphoto").hide();
+        //set upload options
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType = "image/jpeg";
+
+  /*      options.params = {
+            firstname: document.getElementById("firstname").value,
+            lastname: document.getElementById("lastname").value,
+            workplace: document.getElementById("workplace").value
+        }
+*/
+        var ft = new FileTransfer();
+       // alert("uploading now... ")
+        var crime_details=$("#crime_details").val();
+       // alert(crime_details);
+        ft.upload(imageURI, encodeURI("http://sociosquare.com/GMP/gmp_upload.php?crime_details="+crime_details), win, fail, options);
+       // alert('uploaded ? ');
+        $("#ft_progress_block").show();
+        ft.onprogress = function(progressEvent) {
+            if (progressEvent.lengthComputable) {
+                 var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+                /*if(perc > 95){
+                    //setTimeout(function(){$("#ft_progress_block").hide();},7000);                    
+                }else{*/
+                    document.getElementById("ft-prog").value = perc;
+                //}
+            
+            }
+        };
+}
+
+function onFail(message) {
+   // alert(message);
+  //console.log('Failed because: ' + message);
+    $("#ft_progress_block").hide();
+    $("#tkphoto").show();
+    $("#report_info").show();
+    $("#report_info").html("<h3 style='color:800'>Sorry, unable to report the crime. Please check your network availability and try again.</h4>");
+    
+    setTimeout(function(){$("#report_info").hide();},3000);
+}
+
+function win(r) {
+   // console.log("Code = " + r.responseCode);
+   // console.log("Response = " + r.response);
+   // alert("Response =" + r.response);
+   // console.log("Sent = " + r.bytesSent);
+    $("#ft_progress_block").hide();
+    $("#tkphoto").show();
+    $("#report_info").show();
+    $("#report_info").html("<h3 style='color:#080'>Successfully reported the crime. Thanks.</h4>");
+    
+    setTimeout(function(){$("#report_info").hide();},3000);
+    $("#crime_details").val('');
+    $("#photo_disp").hide();
+    $("#submit_photo").hide();
+    $("#crime_details_block").hide();
+}
+
+function fail(error) {
+    $("#ft_progress_block").hide();
+    $("#tkphoto").show();
+   // alert("An error has occurred: Code = " + error.code);
+    //console.log("upload error source " + error.source);
+    //console.log("upload error target " + error.target);
+    $("#report_info").show();
+    $("#report_info").html("<h3 style='color:800'>Sorry, unable to report the crime. Please check your network availability and try again.</h4>");
+    
+    setTimeout(function(){$("#report_info").hide();},3000);
+}
+
+
+</script>
+</div><!-- /page -->
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-color: #002665 !important;
+        }
+        img{ max-width:100%;}
+        .height{height:5px;}
+        .credits-p-width p{
+				color:#fff !important;
+				padding:20px !important;
+				  margin: 0;
+			}
+			
+        @media (min-width: 480px) {
+		  .credits-p-width{
+			    width: 75%;
+		  }
+		  
+		}
+		@media (max-width: 680px) {
+			.height{height:5px;}
+		}
+    </style>
+
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+    <title>Mumbai Police</title>
+</head>
+<body style='background-color:#f00 !important' >
+<div data-role="page" data-position="fixed" style="background-color: rgb(55, 76, 95) !important;">
+	<div class="credit-header">
+		<img style="width: 100%;display: block;" src="assets/images/credits-header01.jpg">
+	</div>
+	<div class="credit-header02">
+		<div class="credits-p-width">
+			<p style="color:#fff;padding:20px !important;">SocioSquare is a fast growing digital agency that has powered an impressive portfolio of brands offering a range of digital services like SEO, SEM, Social Media Marketing, ORM, Website & App development.
+		<br>SocioSquare has offices in Mumbai & Delhi in India and Philadelphia in United States.</p>
+
+		</div>
+		<div align="center" id="global_footer" style="width:100%;text-shadow: none;font-size: 13px;position:absolute;/*bottom: 40px;*/">
+							
+					<p class="powered_by"  ><img id="home_button" src="assets/images/home.png" onclick="goHome();">
+					<div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+				</div><!-- /footer -->
+			</div>
+	
+		<img style="width: 100%;display: block;" src="assets/images/credits-header02.jpg">
+	</div>
+		
+    
+		
+    
+    <!--<div style="font-size:12px; color:#fff;">
+		Developer:<br>Sandeep Kothari <br> Chiranjeev Parsoya
+	</div>-->
+    
+		
+<script>
+function goBack(){
+    $.mobile.changePage( "dashboard.html", { transition: "slide",reverse: 'true'});
+}
+</script>
+</div>
+<script src="assets/js/common.js"></script>
+</body>
+</html>
+
+
+
+
+
+</html>

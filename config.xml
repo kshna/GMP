@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.sociosquare.gmp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Greater Mumbai Police</name>
+    <description>
+    Greater Mumbai police
+    </description>
+    <author email="support@sociosquare.com" href="http://cordova.io">
+        SocioSquare
+    </author>
+    <content src="dashboard.html" />
+    <access origin="*" />
+    <access origin="geo:*" launch-external="yes" />
+    <access origin="tel:*" launch-external="yes" />
+    <access origin="mailto:*" launch-external="yes"/>
+<preference name="SplashScreen" value="screen" />
+<preference name="SplashScreenDelay" value="3000" />
+
+</widget>

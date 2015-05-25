@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Greater Mumbai Police</title>
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-size: 100%;
+            max-width: 100%;
+            background-position: center center;
+            background-color: #002665 !important;
+        }
+        .ui-content{
+            background: transparent;
+        }
+        table th, td, tr{   border: transparent !important;outline: none !important;}
+    </style>
+
+    <!-- JS Bootstrap -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+    onDeviceReady();
+    </script>
+</head>
+<body onload="onBodyLoad()">
+
+<div data-role="page" class="preface1" id="Preface">
+
+    <h3 class="text-center" style="color: #000000">Greater Mumbai Police</h3>
+
+    <div role="main" style="overflow:hidden" class="">
+        <div id="error_msg"></div>
+        <div id="main_default">
+             Enter your mobile number:
+            <form id="getmobno" method="post" onsubmit="return false;">
+                <input type="tel" name="mob" id="mob" pattern="[7-9][0-9]{9}">
+                <input type='submit' name="subs" id="subs" onclick="mobsub();" value="Submit">
+            </form>
+        </div>
+
+    </div><!-- /content -->
+
+    <div align="center" id="global_footer">
+        
+        <p class="powered_by" ><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+<script>
+function mobsub(){
+    var m=$("#mob").val();
+    if(m.length != 10){    
+        $('#error_msg').html("Please enter a valid mobile number");
+        return;
+    }else{
+        if(m[0] != "7" && m[0] !="8" && m[0]!="9"){
+            $('#error_msg').html("Please enter a valid mobile number");
+            return;
+        }
+    }
+    $.ajax({
+        type: 'POST',
+        url: 'http://sociosquare.com/GMP/mobno.php',
+        crossDomain: true,
+        data: "m="+m,
+        success: function(data) {
+            localStorage.setItem("mobile_number",m);
+            $.mobile.changePage("dashboard.html",{ transition: 'none' });                    
+        },
+        error: function(jqXHR, textStatus, errorThrown) {           
+        }
+    });
+}
+function onBodyLoad(){
+        onDeviceReady();
+        //document.addEventListener('deviceready', onDeviceReady, false);
+    }
+
+function onDeviceReady(){                   
+    if (localStorage.getItem("mobile_number") !== null) {    
+        $.mobile.changePage("dashboard.html",{ transition: 'none' });
+    }
+}
+</script>
+
+</div><!-- /page -->
+</body>
+</html>

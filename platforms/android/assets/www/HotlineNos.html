@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+        .ui-btn-active { background: none !important;  }
+        .ui-page {
+            background-color: #002665 !important;
+        }
+        img{ max-width:100%;}
+    </style>
+
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+    <title>Mumbai Police</title>
+</head>
+<body>
+<div data-role="page" id="helpline_nos" class="station-details" data-position="fixed">
+
+    <!--<div data-position="fixed" style="background-color: #F5AB09 !important;" data-tap-toggle="false" data-role="header" data-hide-during-focus="" data-theme="r" class="ui-body-r center-wrapper">
+
+        <div id="left">
+           <a id="go_back"  href="#" data-rel="back" data-transition="none" data-direction="reverse" style="text-decoration:none !important;"><img src="assets/images/back.png"><span style="color: #ffffff;">Back</span></a>
+        </div>
+
+        <div id="right">
+            <a href="javascript:void(0)" onclick="reDirect('index.html');"  style="text-decoration:none !important;" ><img src="assets/images/logo-white.png"></a>
+        </div>
+        <div id="center" style="color: #ffffff;text-shadow: none">Hotlines</div>
+
+
+    </div>&lt;!&ndash; /header &ndash;&gt;-->
+
+    <div role="main" class="ui-content" align="center" style="color: #ffffff;text-shadow: none;">
+
+    <h3 style="color:#FFFFFF;text-shadow: none" class="text-center" id="sub_tab_title">HELPLINE NUMBERS</h3>
+
+
+        <div id="hotlines" style="padding: 20px;border-style: solid;border-width: 0px;">
+	    
+            <h4> Police Control Room</h4>
+            <p> <a href='tel:100'>100</a> </p>
+            <h4>Child/Women/Sr.Citizen</h4>
+            <p><a href='tel:103'>103</a></p>
+            <h4>Infoline</h4>
+            <p> <a href='tel:1090'>1090</a> </p>
+            <h4>Cybercell Helpline<p style="font-size:12px">(Objectionable materials on internet)</p></h4>
+            <p><a href='tel:9820810007'>9820810007</a></p> 
+            <h4>SMS your grievence on</h4>
+            <p style="color:#000000"><b>7738133133 or 7738144144</b></p>
+                   
+	</div>
+
+    </div>
+
+    <div align="center" id="global_footer">
+	
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+<script>
+function goBack(){
+    $.mobile.changePage( "dashboard.html", { transition: "slide",reverse: 'true'});
+}
+</script>
+</div>
+<script src="assets/js/common.js"></script>
+</body>
+</html>
+

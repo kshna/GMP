@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Greater Mumbai Police</title>
+        <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css" />
+        <link href="assets/css/style.css" rel="stylesheet" />
+        <style>
+            .ui-btn-active { background: none !important;  }
+            .ui-page {
+                background-size: 100%;
+                max-width: 100%;
+                background-position: center center;
+                background-color: #002665 !important;
+            }
+            .ui-content{
+                background: transparent;
+            }
+            table th, td, tr{border: transparent !important;outline: none !important;}
+        </style>
+
+        <!-- JS Bootstrap -->
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+
+        <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+
+    </head>
+    <body>
+  
+<div data-role="page"  id="gmp">
+
+    <!--<div data-position="fixed" style="background-color: #F5AB09 !important;" data-tap-toggle="false" data-role="header" data-hide-during-focus="" data-theme="r" class="ui-body-r center-wrapper">
+
+        <div id="left">
+            <a id="go_back" onclick="goBack();" href="javascript:void(0)" style="text-decoration:none !important;"><img src="assets/images/back.png"><span style="color: #ffffff;">Back</span></a>
+        </div>
+
+        <div id="right">
+            <a href="javascript:void(0)" onclick="reDirect('index.html');"  style="text-decoration:none !important;" ><img src="assets/images/logo-white.png"></a>
+        </div>
+        <div id="center" style="color: #ffffff;text-shadow: none">GMP</div>
+
+    </div>&lt;!&ndash; /header &ndash;&gt;-->
+    <h3 class="text-center" style="color: #000000">GREATER MUMBAI POLICE</h3>
+    <div role="main" style="overflow:hidden" class="">
+
+
+        <div style="padding: 20px">
+            <table style='width:100%;border:transparent !important;padding: 0' class="tbl_border_none"><tr>
+                <td style="border: none !important;padding: 0">
+                    <input type="search" name="search" placeholder="search a place" id="place_search" value="" />
+                </td>
+                <td style='font-size:80%; width:3em;border: transparent !important;padding: 0;'>
+                    <a href="javascript:void(0)" onclick="SearchArea($('#place_search').val())" id="search_button"><img src="assets/images/search_button.jpg" style="width: 100%;height:37px;position:relative;margin-top:6px"></a>
+                </td>
+            </tr></table>
+        </div>
+
+        <div id="main_default" align="center">
+
+            <div style="padding: 20px"> <a onclick="getZipCode()" style="margin: 0 !important;"><img src="assets/images/nearme.jpg"> </a></div>
+
+            <div style="margin-top: 20px;padding: 20px" id="areas_list">
+                <div><a href="javascript:void(0)" onclick="getAreaPage(this.id);" id="East Region"><img src="assets/images/east.jpg"> </a></div>
+                <div><a href="javascript:void(0)"  onclick="getAreaPage(this.id);" id="West Region" ><img src="assets/images/west.jpg"></a></div>
+                <div><a href="javascript:void(0)"  onclick="getAreaPage(this.id);" id="Central Region" ><img src="assets/images/central.jpg"></a></div>
+                <div><a href="javascript:void(0)"  onclick="getAreaPage(this.id);" id="North Region" ><img src="assets/images/north.jpg"></a></div>
+                <div><a href="javascript:void(0)"  onclick="getAreaPage(this.id);" id="South Region"><img src="assets/images/south.jpg"></a></div>
+            </div>
+        </div>
+
+    </div><!-- /content -->
+
+    <div align="center" id="global_footer">
+
+        <p class="powered_by" ><img id="home_button" src="assets/images/home.png" onclick="goHome();"><br><div class="powered-by-bg">Powered By &nbsp<a href="#" onclick="window.open('http://www.sociosquare.com', '_system');">SocioSquare</a></div></p>
+    </div><!-- /footer -->
+
+<script>
+
+function goBack(){
+    $.mobile.changePage( "dashboard.html", { transition: "none",reverse: 'true'});
+}
+function getAreaPage(id){
+    $.mobile.changePage('AreaPoliceStationList.html', {
+            data: {
+                area: id
+            },
+            transition: 'none'
+        });
+}
+
+$(document).on( "pagecreate","#gmp", function( e ) {
+    $('#place_search').on('keyup', function(e) {
+        var theEvent = e || window.event;
+        var keyPressed = theEvent.keyCode || theEvent.which;
+        if (keyPressed == 13) {
+            $('#search_button').trigger( 'click' );
+        }
+        return true;
+    });
+});
+
+function SearchArea(searchString){
+    $('#place_search').blur();
+    localStorage.setItem('searchString',searchString);
+    $.mobile.changePage('PoliceStationSearchResults.html', { transition: 'none' });
+}
+
+function getZipCode() {
+$.mobile.loading( "show");
+if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(pos) {
+        var coords, url;
+        coords = pos.coords;
+        url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ coords.latitude + "," + coords.longitude;
+         $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function(data) {
+             if(data.results[0].address_components[data.results[0].address_components.length-1].types[0] == "postal_code"){
+
+                 var postal_code = data.results[0].address_components[data.results[0].address_components.length-1].long_name;
+                 localStorage.setItem('postalCode',postal_code);
+                 $.mobile.loading( "hide");
+                 $.mobile.changePage('NearByPoliceStations.html', { transition: 'none' });
+             }
+             else{
+                 alert("Sorry, Couldn't get your location");
+                 return false;
+             }
+             return false;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+             alert("Error: " + errorThrown);
+        }
+        });
+        },function(error){
+             $.mobile.loading( "hide");
+             switch(error.code) {
+                 case error.PERMISSION_DENIED:
+                 alert("Please switch GPS on.");
+                 break;
+                 case error.POSITION_UNAVAILABLE:
+                 alert("Location information is unavailable.");
+                 break;
+                 case error.TIMEOUT:
+                 alert("Request timed out. Set your GPS location mode to high accuracy.");
+                 break;
+                 case error.UNKNOWN_ERROR:
+                 alert("An unknown error occurred.");
+                 break;
+             }
+        },{enableHighAccuracy: false, maximumAge: 3000, timeout: 8000});
+ }
+ return false;
+}
+
+
+</script>
+</div><!-- /page -->
+    <script src="assets/js/common.js"></script>
+</body>
+</html>
+
+
+
